@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/qs/dist/qs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- url param -->
+    <script>
+        async function urlParam() {
+            const res = await axios.get('/api/person/1');
+            console.log(res);            
+        }
+        urlParam();
+   </script>
+
+   <!-- query -->
+    <script>
+        async function query() {
+            const res1 = await axios.get('/api/person/find',{
+                params:{
+                    name:'111',
+                    age:20
+                }
+            });
+            console.log(res1);            
+        }
+        query();
+   </script>
+
+   <!-- form urlencoded -->
+   <script>
+    async function formUrlEncoded(){
+        const res2 = await axios.post('/api/person',Qs.stringify({
+            name:'111',
+            age:20
+        }),{
+            headers:{'content-type': 'application/x-www-form-urlencoded'}
+        });
+        console.log(res2);
+    }
+    formUrlEncoded()
+   </script>
+</body>
+
+
+
